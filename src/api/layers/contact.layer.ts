@@ -4,6 +4,7 @@ import { RetrieverLayer } from './retriever.layer';
 import { CreateConfig } from '../../config/create-config';
 import { Wid } from '../model/wid';
 import { ControlsLayer } from './controls.layer';
+import { ContactModel } from '@wppconnect/wa-js/dist/whatsapp';
 
 export class ContactLayer extends ControlsLayer {
   constructor(public page: Page, session?: string, options?: CreateConfig) {
@@ -23,7 +24,7 @@ export class ContactLayer extends ControlsLayer {
     name: string,
     surname?: string,
     syncAdressBook?: boolean
-  ): Promise<Wid> {
+  ): Promise<ContactModel> {
     return evaluateAndReturn(
       this.page,
       ({ contactId, name, surname, syncAdressBook }) => {
@@ -41,7 +42,7 @@ export class ContactLayer extends ControlsLayer {
    * @param contactId Buisness profile id ('5533999999999@c.us')
    * @returns Retorna true se o contato foi removido com sucesso
    */
-  public async deleteContact(contactId: string): Promise<boolean> {
+  public async deleteContact(contactId: string): Promise<ContactModel> {
     return evaluateAndReturn(
       this.page,
       ({ contactId }) => window.WPP.contact.remove(contactId),
