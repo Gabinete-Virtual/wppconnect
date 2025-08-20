@@ -29,9 +29,9 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Setup Node
-        uses: actions/setup-node@v4.3.0
+        uses: actions/setup-node@v4.4.0
         with:
-          node-version: 18.x
+          node-version: 22.18.0
 
       - name: Get npm cache directory
         id: npm-cache
