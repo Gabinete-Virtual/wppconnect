@@ -302,7 +302,9 @@ export async function initBrowser(
   }
 
   // Use stealth plugin to avoid being detected as a bot
-  puppeteer.use(StealthPlugin());
+  const stealth = StealthPlugin();
+  stealth.enabledEvasions.delete('user-agent-override');
+  puppeteer.use(stealth);
 
   let browser = null;
   if (options.browserWS && options.browserWS != '') {

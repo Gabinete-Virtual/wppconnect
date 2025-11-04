@@ -21,8 +21,9 @@ import { CreateConfig } from '../../config/create-config';
 import { evaluateAndReturn } from '../helpers';
 import { BusinessProfileModel } from '@wppconnect/wa-js/dist/whatsapp';
 import { Chat } from '../model';
+import { ContactLayer } from './contact.layer';
 
-export class BusinessLayer extends ControlsLayer {
+export class BusinessLayer extends ContactLayer {
   constructor(public page: Page, session?: string, options?: CreateConfig) {
     super(page, session, options);
   }
